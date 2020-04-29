@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!--
+
+        ASSIGNMENT RULES
+        - This is exercise should be done in couples
+        - Implement one exercise each
+        - We suggest you to use Slack or Google Hangouts to speak to each other
+
+        - The solution must be pushed to the repository and be available for the tutors by the end of the day
+        - You can ask for tutor's help
+        - You can google / use StackOverflow BUT we suggest you to use just the material provided
+        - To test the page, just open it with your default browser.
+        - Use Bootstrap4 classes to render the page.
+        - Use correctly containers and rows in order to have a great display
+
+
+        You are implementing a website for a Travel Agency.
+        In the page you can add all the destination you'd like to go in the next future!
+     
+        Ex 1) Implement a navigation bar, connected to all the sections of the page. 
+        Ex 2) Add a logo into the navigation bar 
+     A   Ex 3) Add a Jumbotron section in which you present name and claim of the tour operator
+      O  Ex 4) Implement the "Deal of the Week" section. In this section you'll display 4 destinations.
+         In this section you should have:
+            - 4 destinations per row when the screen is very large
+            - 3 destinations per row when you are on a tablet (or a smaller window)
+            - 2 destinations per row when you are on a small screen
+
+       A Ex 5) Implement the "Welcome Summer" section. In this section you'll propose 6 destinations
+            In this section you should have:
+                - 6 destinations per row when the screen is very large
+                - 3 destinations per row when you are on a tablet (or a smaller window)
+                - 2 destinations per row when you are on a small screen
+        
+      B  Ex 6) Implement a "Deal of the day" section. In this section you'll have:
+            - 66% of the page with a picture of the destination
+            - 33% with Name, dates, price and a short description
+
+    !!done    Ex 7) Make the "Deal of the day" section disappear when the user is mobile
+        Ex 8) Add to the Welcome Summer destinations a large shadow
+        Ex 9) Create a section Last Minute, in which you'll display the pictures from the destinations as Cards
+       ! Ex 10) Create a "Testimonial" section, in which the user can find several feedback from fake customers
+        Ex 11) Create a footer with the company information and a button "contact us"
+
+        Ex 11) Create a button next to each section to collapse and reopen the given section
+        Ex 12) Create a method that counts the number of "travels" on the page
+        Ex 13) Create a modal view with a message and a email field
+        Ex 14) When the user clicks on "contact us" the modal is displayed
+        Ex 15) Create a function that adds a "HOT" badge to all the "Welcome Summer" offers
+        Ex 16) Create a function to delete all "cards" from the page
+      -->
+   <title>Destination Anywhere Agency</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaina+2:wght@400;500;700&display=swap" rel="stylesheet">
+    <link  rel="stylesheet" href="style.css">
+  </head>
+  <body>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <img src="logo.png" width="60" height="50" class="d-inline-block align-top" alt="">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item px-2">
+            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item px-2">
+            <a class="nav-link" href="#">About</a>
+          </li>
+          <li class="nav-item px-2">
+            <a class="nav-link" href="#">Deal of the Week</a>
+          </li>
+          <li class="nav-item px-2">
+            <a class="nav-link" href="#">Welcome Summer</a>
+          </li>
+          <li class="nav-item px-2">
+            <a class="nav-link" href="#">Deal of Day</a>
+          </li>
+          <li class="nav-item px-2">
+            <a class="nav-link" href="#">Last Minute</a>
+          </li>
+          <li class="nav-item px-2">
+            <a class="nav-link" href="#">Welcome Summer</a>
+          </li>
+          <li class="nav-item px-2">
+            <a class="nav-link" href="#">Testimonial</a>
+          </li>
+          <li class="nav-item px-2">
+            <a class="nav-link" href="#">Contact us</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+ <div class="container-fluid"> 
+  <div class="jumbotron img-back text-center text-black" style="background-image: linear-gradient(to bottom, rgba(255,255,255,0.5) 0%,rgba(255,255,255,0.5) 100%), url(https://www.luxurycartravels.com/slider/family-packages-slider.jpg)">
+    <h1 class="display-5 mt-5">Destination Anywhere</h1>
+    <p>World Expeditions has over 40 years of experience operating authentic and unique adventure
+       holidays with a genuine focus on the paths less travelled. We are the pioneers in designing groundbreaking 
+       itineraries and many say our trips start where others end</p>
+    <hr class="my-4">
+    <p>All aboard, adventure is out there.</p>
+    <a class="btn btn-primary btn-lg m-5" href="#" role="button">Learn more</a>
+  </div>
+ </div>
+<section class="weekDeal">
+  <div class="container-md">
+    <div class="row">
+      <div class="col-12">
+          <div class="text-center space">
+              <h2>Deal of the Week</h2>
+          </div>
+          <p>
+            <a class="btn btn-primary collapsed" data-toggle="collapse" href=".dealWeek" role="button" aria-expanded="false" aria-controls="collapseExample">
+              Show deal of the week
+            </a>
+          </p>
+      </div>
+  </div>
+    <div class="row dealWeek">
+      <div class="col-6 col-sm-6 col-md-4 col-lg-3">
+        <figure class="figure">
+            <img alt="picture" src="https://freetravelin.com/wp-content/uploads/2018/12/maljorka1.jpg" class="img">
+                <!-- Play Icon -->
+                <figcaption class="figure-caption">Mallorca</figcaption>
+            </figure>
+     </div>
+
+      <div class="col-6 col-sm-6 col-md-4 col-lg-3">
+        <figure class="figure">
+            <img alt="picture" src="https://www.islands.com/resizer/r91rL1xe0zJTQcEF2U8kt9vy81E=/824x618/arc-anglerfish-arc2-prod-bonnier.s3.amazonaws.com/public/BMOAB7HEXPQUJM7FSKJWMW6VN4.jpg" class="img">
+                <!-- Play Icon -->
+                <figcaption class="figure-caption">Carribean</figcaption>
+            </figure>
+     </div>
+
+
+      <div class="col-6 col-sm-6 col-md-4 col-lg-3">
+        <figure class="figure">
+            <img alt="picture" src="https://mustseeplaces.eu/wp-content/uploads/2016/02/phuket-thailand.jpg" class="img">
+                <!-- Play Icon -->
+                <figcaption class="figure-caption">Thailand</figcaption>
+            </figure>
+     </div>
+
+
+      <div class="col-6 col-sm-6 col-md-4 col-lg-3">
+        <figure class="figure">
+            <img alt="picture" src="https://lh3.googleusercontent.com/proxy/AQU2_yvJAoL9bWi9mDzwIFfzXrNWXyB-spau0pPj4J6mXQwGV5se9wxVJIjWD-5DNP-ufFeTeOfHCRzXOeN1rSq81Yub-ipw-C2soeLsxAy_zANFbozLaNZvYq_ijVQA2L9we52GeKfFtNj4Jg" class="img">
+                <!-- Play Icon -->
+                <figcaption class="figure-caption">Egypt</figcaption>
+            </figure>
+     </div>
+    </div>
+  </div>
+</section>
+
+<section class="welcomeSummer shadow-lg p-3 mb-5 bg-grey rounded">
+  <div class="container-md">
+    <div class="row">
+      <div class="col-12">
+          <div class="text-center space">
+              <h2>Welcome Summer</h2>
+          </div>
+          <p>
+            <a class="btn btn-primary collapsed" data-toggle="collapse" href=".specialSummer" role="button" aria-expanded="false" aria-controls="collapseExample">
+              Show special summer offers
+            </a>
+          </p>
+      </div>
+  </div>
+    <div class="row specialSummer">
+      <div class="col-6 col-sm-6 col-md-4 col-lg-2">
+        <figure class="figure">
+          <img src="img/hot.png" class="position-absolute hot-pic">
+            <img alt="picture" src="https://q-cf.bstatic.com/images/hotel/max1024x768/227/227429708.jpg" class="img-welcome">
+                <!-- Play Icon -->
+                <figcaption class="figure-caption">Bora bora</figcaption>
+            </figure>
+     </div>
+   
+  
+      <div class="col-6 col-sm-6 col-md-4 col-lg-2">
+        <figure class="figure">
+          <img src="img/hot.png" class="position-absolute hot-pic">
+            <img alt="picture" src="https://www.kudatouroperator.it/wp-content/uploads/2016/04/Beachcomber_Mauritius_Paradis-1024x683.jpg" class="img-welcome">
+                <!-- Play Icon -->
+                <figcaption class="figure-caption">Mauritius</figcaption>
+            </figure>
+     </div>
+  
+ 
+      <div class="col-6 col-sm-6 col-md-4 col-lg-2">
+        <figure class="figure">
+          <img src="img/hot.png" class="position-absolute hot-pic">
+            <img alt="picture" src="https://www.ateams.de/typo3temp/_processed_/7/9/csm_sardinien_1_1373e9ee24.jpg" class="img-welcome">
+                <!-- Play Icon -->
+                <figcaption class="figure-caption">Sardinia</figcaption>
+            </figure>
+     </div>
+  
+   
+      <div class="col-6 col-sm-6 col-md-4 col-lg-2">
+        <figure class="figure">
+          <img src="img/hot.png" class="position-absolute hot-pic">
+            <img alt="picture" src="https://cdn.corsiperbarman.it/wp-content/uploads/2018/07/lavorare_a_miami.jpg" class="img-welcome">
+                <!-- Play Icon -->
+                <figcaption class="figure-caption">Miami</figcaption>
+            </figure>
+     </div>
+   
+ 
+  
+    <div class="col-6 col-sm-6 col-md-4 col-lg-2">
+      <figure class="figure">
+        <img src="img/hot.png" class="position-absolute hot-pic">
+          <img alt="picture" src="https://static.wixstatic.com/media/40cfa4_7c4be5b010d84cbab23b9a4cb45e71da.jpg" class="img-welcome">
+              <!-- Play Icon -->
+              <figcaption class="figure-caption">Madagascar</figcaption>
+          </figure>
+   </div>
+
+
+    <div class="col-6 col-sm-6 col-md-4 col-lg-2">
+      <figure class="figure">
+        <img src="img/hot.png" class="position-absolute hot-pic">
+          <img alt="picture" src="https://www.businessdestinations.com/wp-content/uploads/2019/07/Seychelles.jpg" class="img-welcome">
+              <!-- Play Icon -->
+              <figcaption class="figure-caption">Seychelles</figcaption>
+          </figure>
+ 
+  </div>
+  </div>
+</div>
+</section>
+
+
+<section class="dealOfDay d-sm-none d-lg-block d-md-block">
+  <div class="container-md">
+    <div class="row">
+      <div class="col-12">
+          <div class="text-center space">
+              <h2>Show deal of the day</h2>
+          </div>
+          <p>
+            <a class="btn btn-primary collapsed" data-toggle="collapse" href=".dealDay" role="button" aria-expanded="false" aria-controls="collapseExample">
+              Show last minute offers
+            </a>
+          </p>
+      </div>
+  </div>
+  <div class="row dealDay">
+    <div class="col-sm-12 col-md-8 col-lg-8">
+        <img src="https://cdn.britannica.com/06/96306-050-DFE8AFDC/Khao-Tapu-Ao-Phang-na-Thailand-National-Park.jpg" style="max-width: 100%;">
+    </div>
+    <div class="col-sm-12 col-md-4 col-lg-4">
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">Thailand cruise</h5>
+          <p class="card-text">Dates: 1.06.20 - 22.06.20</p>
+          <p class="card-text">Price: $2500 per 1 person</p>
+          <p class="card-text">While Krabi and Phuket have world-class beaches, you can find beautiful views all over Southeast Asia. Continue sailing southward toward Malaysia, where islands like Langkawi and Penang fuse amazing Andaman scenery with a mix of eclectic cultures. Southeast Asia is a wonderland for urban travelers, too. See the skyscrapers of Kuala Lumpur and Hanoi, explore ancient cities like Hong Kong or take advantage of world-class shopping, from Singapore's upmarket Orchard Road to the rough-and-tumble markets of Ho Chi Minh City.</p>
+          <a href="#" class="btn btn-primary">Explore</a>
+        </div>
+      </div>
+     
+    </div>
+  </div>
+</section>
+
+<section class="lastMinute shadow-lg p-3 mb-5 bg-white rounded">
+  <div class="container-md">
+  <div class="text-center space">
+    <h2>Last minute offer</h2>
+  </div>
+  <p>
+    <a class="btn btn-primary collapsed" data-toggle="collapse" href=".card-deck" role="button" aria-expanded="false" aria-controls="collapseExample">
+      Show last minute offers
+    </a>
+  </p>
+  <div class="bd-example">
+    </div>
+  <div class="card-deck">
+    <div class="card">
+      
+      <img src="https://www.fodors.com/wp-content/uploads/2018/06/Greece-Best-Beaches-Hero.jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Greece</h5>
+        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+      </div>
+      <div class="card-footer">
+        <small class="text-muted">Last updated 3 mins ago</small>
+      </div>
+    </div>
+    <div class="card">
+      <img src="https://www.newsecologia.it/wp-content/uploads/2019/10/ibiza-island-royalty-free-image-841230090-1563996710.jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Ibiza</h5>
+        <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+      </div>
+      <div class="card-footer">
+        <small class="text-muted">Last updated 3 mins ago</small>
+      </div>
+    </div>
+    <div class="card">
+      <img src="https://thumbor.forbes.com/thumbor/960x0/https%3A%2F%2Fspecials-images.forbesimg.com%2Fdam%2Fimageserve%2F1030776810%2F960x0.jpg%3Ffit%3Dscale" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Malta</h5>
+        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+      </div>
+      <div class="card-footer">
+        <small class="text-muted">Last updated 3 mins ago</small>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<section class="testimonials">
+  <div class="container-md">
+    <div class="row">
+      <div class="col-12">
+          <div class="text-center space">
+              <h2>Testimonials</h2>
+          </div>
+      </div>
+  </div>
+    <div class="row">
+      <div class="col-12 col-sm-6 col-md-4 col-lg-4">
+        <div class="text-center"> 
+          <img src="https://pngimage.net/wp-content/uploads/2018/05/cliente-icon-png-5.png" alt="..." class="p-4">
+          <blockquote class="blockquote">
+            <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+            <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
+          </blockquote>
+        </div>
+      </div>
+      <div class="col-12 col-sm-6 col-md-4 col-lg-4">
+        <div class="text-center"> 
+          <img src="https://pngimage.net/wp-content/uploads/2018/05/cliente-icon-png-5.png" alt="..." class="p-4">
+          <blockquote class="blockquote">
+            <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+            <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
+          </blockquote>
+        </div>
+      </div>
+      <div class="col-12 col-sm-6 col-md-4 col-lg-4 pb-5">
+        <div class="text-center"> 
+          <img src="https://pngimage.net/wp-content/uploads/2018/05/cliente-icon-png-5.png" alt="..." class="p-4">
+          <blockquote class="blockquote">
+            <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+            <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
+          </blockquote>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+  <footer id="sticky-footer" class="py-4 bg-dark text-white-50">
+    <div class="container">
+      
+      <small>Destination Anywhere &copy; powered by Strive.school </small>
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+        Contact us
+      </button>
+      <!-- start modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="container contact-form">
+                <div class="contact-image">
+                    <img src="https://image.ibb.co/kUagtU/rocket_contact.png" alt="rocket_contact"/>
+                </div>
+                <form method="post">
+                    <h3>Drop Us a Message</h3>
+                   <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="text" name="txtName" class="form-control" placeholder="Your Name *" value="" />
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="txtEmail" class="form-control" placeholder="Your Email *" value="" />
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="txtPhone" class="form-control" placeholder="Your Phone Number *" value="" />
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" name="btnSubmit" class="btnContact" value="Send Message" />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <textarea name="txtMsg" class="form-control" placeholder="Your Message *" style="width: 100%; height: 150px;"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+        </div>
+        </div>
+     <!-- end of modal -->
+    </div>
+   
+  </footer>
+  
+
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+      crossorigin="anonymous"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"></script>
+      
+   <script>
+    
+     function deleteCards() {
+
+      let items = document.querySelectorAll('.card');
+         for(i = 0; i < items.length; i++) {
+          items[i].remove();
+      }
+     }
+
+
+    function addBadge(){
+      let badges = document.querySelectorAll('.hot-pic');
+      for (i=0; i< badges.length; i++){
+        badges[i].style.display ='block';
+      }
+    }
+   
+    
+   </script>
+  </body>
+</html>
